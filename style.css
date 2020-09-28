@@ -8,3 +8,8 @@
 #mainbox {
     text-align: center;
 }
+
+#button0, #button1, #button2, #button3 {
+    background-color: salmon;
+    color: white
+}

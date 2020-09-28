@@ -16,4 +16,4 @@ function setTime() {
     }, 1000); // denotes that time will decrease by one second at a time
 }
 
-setTime();
+setTime(); // this is calling the function so the timer actually runs

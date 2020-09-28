@@ -11,7 +11,8 @@
 
 #button0, #button1, #button2, #button3 {
     background-color: salmon;
-    color: white
+    color: white;
+    margin: 20px;
 }
 
 #button0:hover, #button1:hover, #button2:hover, #button3:hover {

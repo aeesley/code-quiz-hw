@@ -5,7 +5,7 @@
     color: red;
 }
 
-#mainbox {
+#quiz {
     text-align: center;
 }
 
@@ -15,7 +15,7 @@
     margin: 20px;
 }
 
-#button0:hover, #button1:hover, #button2:hover, #button3:hover {
+#button0:hover, #button1:hover, #button2:hover, #button3:hover { 
     cursor: pointer;
     background-color: teal;
 }

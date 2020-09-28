@@ -14,6 +14,9 @@ function setTime() {
             alert("Time is up! GAME OVER!") // shows that when second countdown reaches zero, a message will show that game is over
         }
     }, 1000); // denotes that time will decrease by one second at a time
+
+
+    
 }
 
 setTime(); // this is calling the function so the timer actually runs

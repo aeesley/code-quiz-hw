@@ -13,3 +13,8 @@
     background-color: salmon;
     color: white
 }
+
+#button0:hover, #button1:hover, #button2:hover, #button3:hover {
+    cursor: pointer;
+    background-color: teal;
+}

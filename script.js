@@ -1,13 +1,14 @@
 // JS GOES HERE
-// Definying global variables
-var timeEl = document.querySelector(".time"); 
-var mainEl = document.getElementById("main"); 
-var quizContainer = document.getElementsById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
+// Variables
+const timeEl = document.querySelector(".time"); 
+const mainEl = document.getElementById("main"); 
+const quizContainer = document.querySelector("#quiz");
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+var output = [];
 
 // Defining quiz questions and answers
-var myQuestions = [
+const myQuestions = [
     {
         question: "Who is the original OG of the OC?",
         answers: {
@@ -50,40 +51,42 @@ var myQuestions = [
     },
 ]
 
-// Creating the build quiz function
+
+// Functions
+function showResults(){}
+
 function buildQuiz(){
-    var output = [];
+    // var output = [];
 
     myQuestions.forEach(
         (currentQuestion, questionNumber) => {
             const answers = [];
+
             for(letter in currentQuestion.answers){
                 answers.push(
-                    <label>
+                    `<label>
                         <input type="radio" name="questions${questionNumber}" value="${letter}">
                         ${letter} :
                         ${currentQuestion.answers[letter]}
-                        </input>
-                    </label>
+                    </label>`
                 );
             }
+
             output.push(
-                <section class="question"> ${currentQuestion.question}</section>
-                <section class="answers"> ${answers.join('')}</section>
-            )
+                `<section class="question"> ${currentQuestion.question} </section>
+                <section class="answers"> ${answers.join('')} </section>`
+            );
         }
     )
 };
 
 quizContainer.innerHTML = output.join('');
 
-function showResults(){
 
-}
-
-
+// Start Quiz
 buildQuiz(); //display quiz right away
 
+//Event Listeners
 submitButton.addEventListener('click', showResults);
 
 

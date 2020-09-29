@@ -5,6 +5,50 @@ var quizContainer = document.getElementsById('quiz');
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
 
+var myQuestions = [
+    {
+        question: "Who is the original OG of the OC?",
+        answers: {
+            a: "Vickie Gunvalson",
+            b: "Tamara Barney",
+            c: "Kelly Ripa",
+            d: "Ramona Singer",
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "Who infamously flipped a dinner table?",
+        answers: {
+        a: "Vickie Gunvalson",
+        b: "Cynthia Bailey",
+        c: "Theresa Giudice",
+        d: "Andy Cohen",
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Which Real Housewives franchise only received 1 season?",
+        answers: {
+        a: "Orange County",
+        b: "Washington DC",
+        c: "Miami",
+        d: "Chicago",
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "Who has the longest running divorce on any franchise?",
+        answers: {
+        a: "Alexis Bellino",
+        b: "Taylor Armstrong",
+        c: "Ramona Singer",
+        d: "Bethenny Frankel",
+        },
+        correctAnswer: "d"
+    },
+]
+
+
 
 function buildQuiz(){
 

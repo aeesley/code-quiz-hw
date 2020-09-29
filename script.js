@@ -1,10 +1,12 @@
 // JS GOES HERE
-var timeEl = document.querySelector(".time"); // defining time class on html doc
-var mainEl = document.getElementById("main"); // defining main id on html doc
+// Definying global variables
+var timeEl = document.querySelector(".time"); 
+var mainEl = document.getElementById("main"); 
 var quizContainer = document.getElementsById('quiz');
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
 
+// Defining quiz questions and answers
 var myQuestions = [
     {
         question: "Who is the original OG of the OC?",
@@ -48,11 +50,32 @@ var myQuestions = [
     },
 ]
 
-
-
+// Creating the build quiz function
 function buildQuiz(){
+    var output = [];
 
-}
+    myQuestions.forEach(
+        (currentQuestion, questionNumber) => {
+            const answers = [];
+            for(letter in currentQuestion.answers){
+                answers.push(
+                    <label>
+                        <input type="radio" name="questions${questionNumber}" value="${letter}">
+                        ${letter} :
+                        ${currentQuestion.answers[letter]}
+                        </input>
+                    </label>
+                );
+            }
+            output.push(
+                <section class="question"> ${currentQuestion.question}</section>
+                <section class="answers"> ${answers.join('')}</section>
+            )
+        }
+    )
+};
+
+quizContainer.innerHTML = output.join('');
 
 function showResults(){
 

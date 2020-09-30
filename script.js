@@ -20,6 +20,13 @@ const resultsContainer = document.querySelector("#results");
 const submitButton = document.querySelector("#submit");
 var output = [];
 
+//pagination variables
+const previousButton = document.querySelector("#previous");
+const nextButton = document.querySelector("#next");
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+
 // Defining quiz questions and answers
 const myQuestions = [
     {

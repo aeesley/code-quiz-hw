@@ -139,8 +139,33 @@ function showResults() {
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }
 
+// function to get paginations with slides to work
+function showSlide(n){
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
+    if(currentSlide === 0){
+        previousButton.style.display = 'none';
+    }
+    else{
+        previousButton.style.display = 'inline=block';
+    }
+    if(currentSlide === slideslength-1){
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'inline-block';
+    }
+    else{
+        nextButton.style.display = 'inline-block';
+        submitButton.style.display = 'none';
+    }
+}
+
+
+
 // Start Quiz
 buildQuiz(); //display quiz right away
+
+showSlide(0);
 
 //Event Listeners
 submitButton.addEventListener('click', showResults);

@@ -139,7 +139,7 @@ function showResults() {
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }
 
-// function to get paginations with slides to work
+// Function to get paginations with slides to work
 function showSlide(n){
     slides[currentSlide].classList.remove('active-slide');
     slides[n].classList.add('active-slide');
@@ -160,14 +160,22 @@ function showSlide(n){
     }
 }
 
+// Calling the buildQuiz function (Starting the Quiz
+buildQuiz(); 
 
+showSlide(currentSlide);
 
-// Start Quiz
-buildQuiz(); //display quiz right away
+function showNextSlide(){
+    showSlide(currentSlide + 1);
+}
 
-showSlide(0);
+function showPreviousSlide(){
+    showSlide(currentSlide - 1);
+}
+
 
 //Event Listeners
 submitButton.addEventListener('click', showResults);
-
+previousButton.addEventListener("click", showPreviousSlide);
+nextButton.addEventListener("click", showNextSlide);
 

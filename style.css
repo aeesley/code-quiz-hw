@@ -19,11 +19,10 @@ body {
 }
 
 .grid h1 {
-    font-family: "sans-serif";
-    background-color: palevioletred;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
     text-align: center;
-    color: white;
+    color:palevioletred;
     padding: 2px 0px;
 }
 
@@ -34,9 +33,10 @@ body {
 }
 
 .grid #question {
-    font-family: "monospace";
+    font-family: "comic sans";
     font-size: 30px;
-    color: blueviolet;
+    text-align: center;
+    color: black;
 }
 
 .buttons {
@@ -44,18 +44,18 @@ body {
 }
  
 #btn0, #btn1, #btn2, #btn3 {
-    background-color: #01BBFF;
+    background-color: black;
     width: 250px;
     font-size: 20px;
     color: #fff;
-    border: 1px solid #1D3C6A;
+    border: 1px solid black;
     margin: 10px 40px 10px 0px;
     padding: 10px 10px;
 }
  
 #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
-    background-color: #01BBFF;
+    background-color: palevioletred;
 }
  
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {

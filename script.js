@@ -1,5 +1,9 @@
 // PSEUDO CODE
 /* 
+1. Timer (setInterval) should start and run around all of the other quiz functions so that the timer is counting down while the user is playing the game. If timer gets to 0 before user finishes questions, alert will say "game over". Get time start by calling setInterval function inside of the quiz function.
+2. Create array of objects with quiz questions, answer choices, and correct answer
+3. 
+
 Declare global variables, could include = 
 Page opens main container that holds header, text, and start quiz option.   High scores and timer are visible at top left and top right respectively. Toggle logic would give user an option to start quiz. The toggle would trigger both the start of the quiz and the timer.
 
@@ -11,21 +15,35 @@ someFunction() {EVERYTHING}
    
 */
 
+// Array of objects with each object being a new question with question, answer choices, and correct answer associated with it.
+var questions = [
+    new Question("Who is the original OG of the OC?", ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'], "Vickie Gunvalson"),
+    new Question("Who infamously flipped a dinner table?", ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], "Theresa Giudice"),
+    new Question("Which Real Housewives franchise only received 1 season?", ['Orange County', 'Washington DC', 'Miami', 'Chicago'], "Washington DC"),
+    new Question("Who has the longest running divorce on any franchise?", ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'], "Bethenny Frankel"),
+    new Question("What network does the Real Housewives air on?", ["Style", "TLC", "Oxygen", "Bravo"], "Bravo")
+];
 
 // Timer Functionality
+// Timer variables set to location on HTML page where the timer will appear
 const timeEl = document.querySelector(".time"); 
 const mainEl = document.getElementById("main"); 
 
-var secondsLeft = 30; // defining totall time alloted to user taking quiz
+// Total time we are alloting to game player (timer starts at 60 seconds)
+var secondsLeft = 60; 
 
+// Function using setInterval that will get the timer to display starting with 60 seconds and then decrease by 1 second, every 1 second until it reaches 0. 
 function setTime() {
     var timerInterval = setInterval(function() {
-        secondsLeft--; //shows that time will decrease
-        timeEl.textContent = secondsLeft + " seconds left!"; // shows message that will display on page with time counting down
+        // shows that seconds left will be decreasing
+        secondsLeft--;
+        // Timer will show up in the timeEl element on the page with seconds left counting down + seconds left in text so the user understands what it means
+        timeEl.textContent = secondsLeft + " seconds left!"; 
 
+        // When the timer reaches 0 an alert will say "game over!"
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            alert("Time is up! GAME OVER!") // shows that when second countdown reaches zero, a message will show that game is over
+            alert("GAME OVER!") 
         }
     }, 1000); // denotes that time will decrease by one second at a time
     
@@ -67,23 +85,25 @@ Question.prototype.isCorrectAnswer = function(choice) {
  
  
 function populate() {
+// calling timer function to start timer countdown
 setTime();
+    // when quiz is over, game will show user score
     if(quiz.isEnded()) {
         showScores();
     }
     else {
-        // show question
+        // If game is not over (still running), the game will display the questions...
         var element = document.getElementById("question");
         element.innerHTML = quiz.getQuestionIndex().text;
  
-        // show options
+        // ... and answer options as buttons. For loop shows it will run through all questions as user answers
         var choices = quiz.getQuestionIndex().choices;
         for(var i = 0; i < choices.length; i++) {
             var element = document.getElementById("choice" + i);
             element.innerHTML = choices[i];
             guess("btn" + i, choices[i]);
         }
- 
+        // this is calling the showProgress function to show user how many questions they have answered as they are running through the quiz
         showProgress();
     }
 };
@@ -96,13 +116,14 @@ function guess(id, guess) {
     }
 };
  
- 
+ // function that shows user progress as how many questions they have answered out of total questions as they move through the game
 function showProgress() {
     var currentQuestionNumber = quiz.questionIndex + 1;
     var element = document.getElementById("progress");
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
 };
  
+// function that shows user score once they have completed the game 
 function showScores() {
     var gameOverHTML = "<h1>Result</h1>";
     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
@@ -110,19 +131,12 @@ function showScores() {
     element.innerHTML = gameOverHTML;
 };
  
-// create questions here
-var questions = [
-    new Question("Who is the original OG of the OC?", ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'], "Vickie Gunvalson"),
-    new Question("Who infamously flipped a dinner table?", ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], "Theresa Giudice"),
-    new Question("Which Real Housewives franchise only received 1 season?", ['Orange County', 'Washington DC', 'Miami', 'Chicago'], "Washington DC"),
-    new Question("Who has the longest running divorce on any franchise?", ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'], "Bethenny Frankel"),
-    new Question("What network does the Real Housewives air on?", ["Style", "TLC", "Oxygen", "Bravo"], "Bravo")
-];
+
  
-// create quiz
+// Defining the variable to create the quiz
 var quiz = new Quiz(questions);
  
-// display quiz
+// Calling the function to populate the quiz so the user can start playing
 populate();
 
 

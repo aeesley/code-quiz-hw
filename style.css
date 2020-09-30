@@ -14,8 +14,15 @@
     color: white;
     margin: 20px;
     padding: 20px;
+}
 
-#button0:hover, #button1:hover, #button2:hover, #button3:hover { 
-    cursor: pointer;
+#submit{
+    display: block;
+    margin: 0 auto;
+}
+
+#submit:hover{
     background-color: teal;
+    font-weight: bold;
+    color: white
 }

@@ -90,11 +90,11 @@ function showScores() {
  
 // create questions here
 var questions = [
-    new Question("Hyper Text Markup Language Stand For?", ["JavaScript", "XHTML","CSS", "HTML"], "HTML"),
-    new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
-    new Question("Which is not a JavaScript Framework?", ["Python Script", "JQuery","Django", "NodeJS"], "Django"),
-    new Question("Which is used for Connect To Database?", ["PHP", "HTML", "JS", "All"], "PHP"),
-    new Question("Webdevtrick.com is about..", ["Web Design", "Graphic Design", "SEO & Development", "All"], "All")
+    new Question("Who is the original OG of the OC?", ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'], "Vickie Gunvalson"),
+    new Question("Who infamously flipped a dinner table?", ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], "Theresa Giudice"),
+    new Question("Which Real Housewives franchise only received 1 season?", ['Orange County', 'Washington DC', 'Miami', 'Chicago'], "Washington DC"),
+    new Question("Who has the longest running divorce on any franchise?", ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'], "Bethenny Frankel"),
+    new Question("What network does the Real Housewives air on?", ["Style", "TLC", "Oxygen", "Bravo"], "Bravo")
 ];
  
 // create quiz

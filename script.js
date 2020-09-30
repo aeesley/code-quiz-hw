@@ -44,7 +44,7 @@ const myQuestions = [
     },
 ]
 
-// TIMER FUNCTIONALITY
+// Timer Functionality
 
 var secondsLeft = 75; // defining totall time alloted to user taking quiz
 
@@ -62,7 +62,7 @@ function setTime() {
 }
 
 
-// Functions
+// Other Functions
 
 function buildQuiz(){
     setTime(); 
@@ -87,8 +87,10 @@ function buildQuiz(){
         }
         // add to the q&a results
         output.push(
-            '<div class="question">' + myQuestions[i].question + '</div>'
-            + '<div class="answers">' + answers.join('') + '</div>'
+            `<div class="slide">`
+                + '<div class="question">' + myQuestions[i].question + '</div>'
+                + '<div class="answers">' + answers.join('') + '</div>'
+            `</div>`
         );
     }
 

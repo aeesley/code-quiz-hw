@@ -74,3 +74,9 @@
     //         );
     //     }
     // );
+
+    // FROM CLASS
+
+    function drawQuestionNum(){
+        quizContainer.textContent = (myQuestions);
+    }

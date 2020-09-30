@@ -1,10 +1,22 @@
-// JS GOES HERE
+// PSEUDO CODE
+/* 
+Declare global variables, could include = 
+Page opens main container that holds header, text, and start quiz option.   High scores and timer are visible at top left and top right respectively. Toggle logic would give user an option to start quiz. The toggle would trigger both the start of the quiz and the timer.
+
+2. Quiz timer starts (setInterval function)
+3. Declare object array with questions, answers, and correct answer
+
+setInterval(someFunction, seconds*1000)
+someFunction() {EVERYTHING}
+   
+*/
+
 // Variables
 const timeEl = document.querySelector(".time"); 
 const mainEl = document.getElementById("main"); 
 const quizContainer = document.querySelector("#quiz");
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+const resultsContainer = document.querySelector("#results");
+const submitButton = document.querySelector("#submit");
 var output = [];
 
 // Defining quiz questions and answers
@@ -51,6 +63,7 @@ const myQuestions = [
     },
 ]
 
+console.log(myQuestions); // this functions but it's coming back as an object
 
 // Functions
 function showResults(){}
@@ -78,9 +91,12 @@ function buildQuiz(){
             );
         }
     )
+    
+    quizContainer.textContent = output.join('');
+    
 };
 
-quizContainer.innerHTML = output.join('');
+localStorage.setItem("myQuestions", JSON.stringify(myQuestions));
 
 
 // Start Quiz
@@ -92,6 +108,7 @@ submitButton.addEventListener('click', showResults);
 
 
 
+//TIMER FUNCTIONALITY
 
 // var secondsLeft = 75; // defining totall time alloted to user taking quiz
 

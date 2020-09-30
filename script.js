@@ -57,7 +57,7 @@ function buildQuiz(){
     for (var i=0; i<myQuestions.length; i++){
 
         answers = [];
-        
+
         for (letter in myQuestions[i].answers) {
             //radio button in html
             answers.push(
@@ -79,29 +79,38 @@ function buildQuiz(){
     quizContainer.innerHTML = output.join('');
 }
 
-function showResults(){
+function showResults() {
     //collect answers
     var answerContainers = quizContainer.querySelectorAll('.answers');
 
     //count wrong answers
-    var userAnswer = '';
-    var numCorrect = 0;
+    // var userAnswer = '';
+    // var numCorrect = 0;
 
-    for (var i=0; i<myQuestions.length; i++){
-        userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+    // for (var i=0; i<myQuestions.length; i++){
+    //     userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+    // keep track of answers
+    let numCorrect = 0;
+
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+
+        var answerContainer = answerContainers[questionNumber];
+        var selector = `input[name=questions${questionNumber}]:checked`;
+        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
         // if else loop, changing answer colors based on correct/incorrect
-        if (userAnswer === myQuestions[i].correctAnswer){
+        if (userAnswer === currentQuestion.correctAnswer) {
 
             numCorrect++;
-            answerContainers[i].style.color = 'lightgreen';
+            answerContainers[questionNumber].style.color = 'green';
         }
         else {
-            answerContainers[i].style.color = 'red';
+            answerContainers[questionNumber].style.color = 'red';
         }
-    }
+    });
     // show correct answers out of total
-    resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }
 
 // Start Quiz

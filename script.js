@@ -88,7 +88,7 @@ function buildQuiz(){
         }
         // add to the q&a results
         output.push(
-            'div class="question">' + myQuestions[i].question + '</div>'
+            '<div class="question">' + myQuestions[i].question + '</div>'
             + '<div class="answers">' + answers.join('') + '</div>'
         );
     }

@@ -69,63 +69,36 @@ console.log(myQuestions); // this functions but it's coming back as an object
 function showResults(){}
 
 function buildQuiz(){
-    // var output = [];
+    //storing answers
+    var output = [];
+    var answers;
 
-    myQuestions.forEach(
-        (currentQuestion, questionNumber) => {
-            const answers = [];
-
-            for(letter in currentQuestion.answers){
-                answers.push(
-                    `<label>
-                        <input type="radio" name="questions${questionNumber}" value="${letter}">
-                        ${letter} :
-                        ${currentQuestion.answers[letter]}
-                    </label>`
-                );
-            }
-
-            output.push(
-                `<section class="question"> ${currentQuestion.question} </section>
-                <section class="answers"> ${answers.join('')} </section>`
+    //by using for loops
+    for (var i=0; i<myQuestions.length; i++){
+        answers = [];
+        for (letter in myQuestions[i].answers) {
+            //radio button in html
+            answers.push(
+                `<label>`
+                + `<input type="radio" name="question"` + i + `"value="` + letter + '">'
+                + letter + ': '
+                + myQuestions[i].answers[letter]
+                +'</label>'
             );
         }
-    )
-    
-    quizContainer.textContent = output.join('');
-    
-};
+        // add to the q&a results
+        output.push(
+            'div class="question">' + myQuestions[i].question + '</div>'
+            + '<div class="answers">' + answers.join('') + '</div>'
+        );
+    }
 
-localStorage.setItem("myQuestions", JSON.stringify(myQuestions));
-
+    // join to HTML
+    quizContainer.innerHTML = output.join('');
+}
 
 // Start Quiz
 buildQuiz(); //display quiz right away
 
 //Event Listeners
 submitButton.addEventListener('click', showResults);
-
-
-
-
-//TIMER FUNCTIONALITY
-
-// var secondsLeft = 75; // defining totall time alloted to user taking quiz
-
-// function setTime() {
-//     var timerInterval = setInterval(function() {
-//         secondsLeft--; //shows that time will decrease
-//         timeEl.textContent = secondsLeft + " seconds left!"; // shows message that will display on page with time counting down
-
-//         if(secondsLeft === 0) {
-//             clearInterval(timerInterval);
-//             alert("Time is up! GAME OVER!") // shows that when second countdown reaches zero, a message will show that game is over
-//         }
-//     }, 1000); // denotes that time will decrease by one second at a time
-
-
-    
-// }
-
-// setTime(); // this is calling the function so the timer actually runs
-

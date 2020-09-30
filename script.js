@@ -18,6 +18,7 @@ const mainEl = document.getElementById("main");
 const quizContainer = document.querySelector("#quiz");
 const resultsContainer = document.querySelector("#results");
 const submitButton = document.querySelector("#submit");
+
 var output = [];
 
 //pagination variables
@@ -27,28 +28,70 @@ const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
 
-// Defining quiz questions and answers
+// // Defining quiz questions and answers
 const myQuestions = [
     {
-        question: "Who is the original OG of the OC?",
-        answers: ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'],
-        correctAnswer: '0'
+    question: "Who is the original OG of the OC?",
+    answers: {
+        a: "Vickie Gunvalson", 
+        b: "Tamara Barney", 
+        c: "Kelly Ripa", 
+        d: "Ramona Singer",
+        },
+        correctAnswer: "a"
     },
     {
         question: "Who infamously flipped a dinner table?",
-        answers: ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], 
-        correctAnswer: '2'
+        answers: {
+            a: "Vickie Gunvalson", 
+            b: "Cynthia Bailey", 
+            c: "Theresa Giudice", 
+            d: "Andy Cohen",
+            },
+        correctAnswer: "c"
     },
     {
         question: "Which Real Housewives franchise only received 1 season?",
-        answers: ['Orange County', 'Washington DC', 'Miami', 'Chicago'],
-        correctAnswer: '1'
+        answers: {
+            a: "Orange County", 
+            b: "Washington DC", 
+            c: "Miami", 
+            d: "Chicago",
+            },
+        correctAnswer: "b"
     },
     {
         question: "Who has the longest running divorce on any franchise?",
-        answers: ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'],
-        correctAnswer: '3'
+        answers: {
+            a: "Alexis Bellino", 
+            b: "Taylor Armstrong", 
+            c: "Ramona Singer", 
+            d: "Bethenny Frankel",
+            },
+        correctAnswer: "d"
     },
+
+    // DIFFERENT VERSION QUESTION SETS
+    // {
+    //     question: "Who is the original OG of the OC?",
+    //     choices: ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'],
+    //     correctAnswer: '0'
+    // },
+    // {
+    //     question: "Who infamously flipped a dinner table?",
+    //     choices: ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], 
+    //     correctAnswer: '2'
+    // },
+    // {
+    //     question: "Which Real Housewives franchise only received 1 season?",
+    //     choices: ['Orange County', 'Washington DC', 'Miami', 'Chicago'],
+    //     correctAnswer: '1'
+    // },
+    // {
+    //     question: "Who has the longest running divorce on any franchise?",
+    //     choices: ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'],
+    //     correctAnswer: '3'
+    // },
 ]
 
 // Timer Functionality
@@ -73,37 +116,64 @@ function setTime() {
 
 function buildQuiz(){
     setTime(); 
-    //storing answers
-    var output = [];
-    var answers;
 
-    //by using for loops
-    for (var i=0; i<myQuestions.length; i++){
+    const output = [];
 
-        answers = [];
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
 
-        for (letter in myQuestions[i].answers) {
-            //radio button in html
-            answers.push(
-                `<label>`
-                + `<input type="radio" name="question"` + i + `"value="` + letter + '">'
-                + letter + ': '
-                + myQuestions[i].answers[letter]
-                +'</label>'
-            );
+        // variable to store the list of possible answers
+        const answers= [];
+
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
+
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
         }
-        // add to the q&a results
+
+        // add this question and its answers to the output
         output.push(
-            `<div class="slide">`
-                + '<div class="question">' + myQuestions[i].question + '</div>'
-                + '<div class="answers">' + answers.join('') + '</div>'
-            `</div>`
+          `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
+            <div class="choices"> ${answers.join("")} </div>
+          </div>`
         );
-    }
+      }
+    );
+    //storing answers
+    //         var choices = [];
+
+    //         for(letter in currentQuestion.choices){
+
+    //             choices.push(
+    //                 `<label>
+    //                 <input = type="radio" name="questions${question.Number}" value="${letter}">
+    //                 ${letter} :
+    //                 ${currentQuestion.choices[letter]}
+    //                 </label>`
+    //             );
+    //         }
+    //         output.push(
+    //             `<div class="slide">
+    //                 <div class-"question"> ${currentQuestion.question} </div>
+    //                 <div class="answers"> ${choices.join("")} >/div>
+    //                 </div>`
+    //         );
+    //     }
+    // );
 
     // join to HTML
     quizContainer.innerHTML = output.join('');
 }
+
 
 function showResults() {
     //collect answers
@@ -150,7 +220,7 @@ function showSlide(n){
     else{
         previousButton.style.display = 'inline=block';
     }
-    if(currentSlide === slideslength-1){
+    if(currentSlide === slides.length-1){
         nextButton.style.display = 'none';
         submitButton.style.display = 'inline-block';
     }
@@ -161,7 +231,7 @@ function showSlide(n){
 }
 
 // Calling the buildQuiz function (Starting the Quiz
-buildQuiz(); 
+buildQuiz();
 
 showSlide(currentSlide);
 
@@ -172,6 +242,7 @@ function showNextSlide(){
 function showPreviousSlide(){
     showSlide(currentSlide - 1);
 }
+
 
 
 //Event Listeners

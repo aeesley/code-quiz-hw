@@ -49,3 +49,28 @@
 //     quizContainer.textContent = output.join('');
     
 // };
+
+
+
+// OTHER BUILDQUIZ FUNCTION
+
+    //         var choices = [];
+
+    //         for(letter in currentQuestion.choices){
+
+    //             choices.push(
+    //                 `<label>
+    //                 <input = type="radio" name="questions${question.Number}" value="${letter}">
+    //                 ${letter} :
+    //                 ${currentQuestion.choices[letter]}
+    //                 </label>`
+    //             );
+    //         }
+    //         output.push(
+    //             `<div class="slide">
+    //                 <div class-"question"> ${currentQuestion.question} </div>
+    //                 <div class="answers"> ${choices.join("")} >/div>
+    //                 </div>`
+    //         );
+    //     }
+    // );

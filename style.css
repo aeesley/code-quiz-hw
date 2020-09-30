@@ -1,12 +1,12 @@
 /* // CSS GOES HERE */
-/* .time {
-    text-align: right;
+.time {
+    text-align: left;
     font-size: 20px;
     color: red;
-} */
+}
 
 body {
-    background-color: black;
+    background-color: pink;
 }
 
 .grid {

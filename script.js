@@ -11,6 +11,27 @@ someFunction() {EVERYTHING}
    
 */
 
+
+// Timer Functionality
+const timeEl = document.querySelector(".time"); 
+const mainEl = document.getElementById("main"); 
+
+var secondsLeft = 30; // defining totall time alloted to user taking quiz
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--; //shows that time will decrease
+        timeEl.textContent = secondsLeft + " seconds left!"; // shows message that will display on page with time counting down
+
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            alert("Time is up! GAME OVER!") // shows that when second countdown reaches zero, a message will show that game is over
+        }
+    }, 1000); // denotes that time will decrease by one second at a time
+    
+}
+
+
 function Quiz(questions) {
     this.score = 0;
     this.questions = questions;
@@ -46,6 +67,7 @@ Question.prototype.isCorrectAnswer = function(choice) {
  
  
 function populate() {
+setTime();
     if(quiz.isEnded()) {
         showScores();
     }
@@ -109,8 +131,7 @@ populate();
 
 
 // Variables
-// const timeEl = document.querySelector(".time"); 
-// const mainEl = document.getElementById("main"); 
+
 
 // const quizContainer = document.querySelector("#quiz");
 // const resultsContainer = document.querySelector("#results");
@@ -191,22 +212,6 @@ populate();
 //     // },
 // ]
 
-// // Timer Functionality
-
-// var secondsLeft = 75; // defining totall time alloted to user taking quiz
-
-// function setTime() {
-//     var timerInterval = setInterval(function() {
-//         secondsLeft--; //shows that time will decrease
-//         timeEl.textContent = secondsLeft + " seconds left!"; // shows message that will display on page with time counting down
-
-//         if(secondsLeft === 0) {
-//             clearInterval(timerInterval);
-//             alert("Time is up! GAME OVER!") // shows that when second countdown reaches zero, a message will show that game is over
-//         }
-//     }, 1000); // denotes that time will decrease by one second at a time
-    
-// }
 
 
 // // Other Functions

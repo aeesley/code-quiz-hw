@@ -14,6 +14,7 @@ someFunction() {EVERYTHING}
 // Variables
 const timeEl = document.querySelector(".time"); 
 const mainEl = document.getElementById("main"); 
+
 const quizContainer = document.querySelector("#quiz");
 const resultsContainer = document.querySelector("#results");
 const submitButton = document.querySelector("#submit");
@@ -66,7 +67,6 @@ const myQuestions = [
 console.log(myQuestions); // this functions but it's coming back as an object
 
 // Functions
-function showResults(){}
 
 function buildQuiz(){
     //storing answers
@@ -95,6 +95,31 @@ function buildQuiz(){
 
     // join to HTML
     quizContainer.innerHTML = output.join('');
+}
+
+function showResults(){
+    //collect answers
+    var answerContainers = quizContainer.querySelectorAll('.answers');
+
+    //count wrong answers
+    var userAnswer = '';
+    var numCorrect = 0;
+
+    for (var i=0; i<myQuestions.length; i++){
+        userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+        // if else loop, changing answer colors based on correct/incorrect
+        if (userAnswer === myQuestions[i].correctAnswer){
+
+            numCorrect++;
+            answerContainers[i].style.color = 'lightgreen';
+        }
+        else {
+            answerContainers[i].style.color = 'red';
+        }
+    }
+    // show correct answers out of total
+    resultsContainer.innerHTML = numCorrect + ' out of ' + myQuestions.length;
 }
 
 // Start Quiz

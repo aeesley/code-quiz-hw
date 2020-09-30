@@ -24,43 +24,23 @@ var output = [];
 const myQuestions = [
     {
         question: "Who is the original OG of the OC?",
-        answers: {
-            a: "Vickie Gunvalson",
-            b: "Tamara Barney",
-            c: "Kelly Ripa",
-            d: "Ramona Singer",
-        },
-        correctAnswer: "a"
+        answers: ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'],
+        correctAnswer: '0'
     },
     {
         question: "Who infamously flipped a dinner table?",
-        answers: {
-        a: "Vickie Gunvalson",
-        b: "Cynthia Bailey",
-        c: "Theresa Giudice",
-        d: "Andy Cohen",
-        },
-        correctAnswer: "c"
+        answers: ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], 
+        correctAnswer: '2'
     },
     {
         question: "Which Real Housewives franchise only received 1 season?",
-        answers: {
-        a: "Orange County",
-        b: "Washington DC",
-        c: "Miami",
-        d: "Chicago",
-        },
-        correctAnswer: "b"
+        answers: ['Orange County', 'Washington DC', 'Miami', 'Chicago'],
+        correctAnswer: '1'
     },
     {
         question: "Who has the longest running divorce on any franchise?",
-        answers: {
-        a: "Alexis Bellino",
-        b: "Taylor Armstrong",
-        c: "Ramona Singer",
-        d: "Bethenny Frankel",
-        },
-        correctAnswer: "d"
+        answers: ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'],
+        correctAnswer: '3'
     },
 ]
 
@@ -75,7 +55,9 @@ function buildQuiz(){
 
     //by using for loops
     for (var i=0; i<myQuestions.length; i++){
+
         answers = [];
+        
         for (letter in myQuestions[i].answers) {
             //radio button in html
             answers.push(

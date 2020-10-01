@@ -1,19 +1,23 @@
 // PSEUDO CODE
 /* 
-1. Timer (setInterval) should start and run around all of the other quiz functions so that the timer is counting down while the user is playing the game. If timer gets to 0 before user finishes questions, alert will say "game over". Get time start by calling setInterval function inside of the quiz function.
-2. Create array of objects with quiz questions, answer choices, and correct answer
-3. 
+Start page should describe the quiz and give the users an option to start game or view high scores
 
-Declare global variables, could include = 
-Page opens main container that holds header, text, and start quiz option.   High scores and timer are visible at top left and top right respectively. Toggle logic would give user an option to start quiz. The toggle would trigger both the start of the quiz and the timer.
+When user clicks start game, page will go to the game.html and Timer (setInterval) should start and run around all of the other quiz functions so that the timer is counting down while the user is playing the game. If timer gets to 0 before user finishes questions, alert will say "game over". Get time start by calling setInterval function inside of the quiz function.
 
-2. Quiz timer starts (setInterval function)
-3. Declare object array with questions, answers, and correct answer
+Create array of objects with quiz questions, answer choices, and correct answer
 
-setInterval(someFunction, seconds*1000)
-someFunction() {EVERYTHING}
-   
-*/
+Call necessary global variables from html pages so correct js can map to the right places.
+
+Write js functions for array of question/answer/correct answer objects getting everything to load on game.html page so that user answers one question at a time and computer also checks and logs their question after each answer so it's keeping score behind the scene.
+
+Function that keeps track of where user is so it displays what number question they are on out of total question
+
+When use completes game it refreshes to end.html with the users score
+
+End.html also gives the user an option to save their score or play again
+
+Save score option ports to highscores.html where the users saved name and score would show up on the page IF their score was high enough to make the list. Give list a max list count of 5 so only the 5 top scores overall show up. If the users score isn't high enough then they don't make the list.*/
+
 
 // Array of objects with each object being a new question with question, answer choices, and correct answer associated with it.
 var questions = [
@@ -49,13 +53,6 @@ function setTime() {
     
  }
     
- // Score Penalty Logic
-// THIS WOULD GO INSIDE THE setTime function
-//  if(guess != isCorrectAnswer){
-//     scorePenalty();
-// }
-// THEN WOULD CALL THE setTime function inside the populate function?
-
 
 function Quiz(questions) {
     this.score = 0;
@@ -79,13 +76,6 @@ Quiz.prototype.isEnded = function() {
     return this.questionIndex === this.questions.length;
 }
 
-// Quiz.prototype.isEnded = function() {
-//     if (currentQuestionNumber === questions.length) { // atempted to push answers to end.html
-//         localStorage.setItem('mostRecentScore', score)
-//         return window.location.assign("/end.htlm");
-//     }
-// }
- 
  
 function Question(text, choices, answer) {
     this.text = text;
@@ -137,23 +127,15 @@ function showProgress() {
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
 };
  
-// function that shows user score once they have completed the game 
-// function showScores() {
-//     var gameOverHTML = "<h1>Result</h1>";
-//     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
-//     var element = document.getElementById("quiz");
-//     element.innerHTML = gameOverHTML;
-// };
-
 function showScores() {
     var gameOverHTML = "<h1>finalScore</h1>";
     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
 
-    localStorage.setItem('mostRecentScore', quiz.score);
+    localStorage.setItem('mostRecentScore', quiz.score); // sending quiz.score to local storage so we can grab it on the end.html page
 
-    return window.location.assign("/end.html");
+    return window.location.assign("/end.html"); // this make it refresh and show in the end.html page instead of game.html
 };
  
  

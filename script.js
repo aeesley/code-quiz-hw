@@ -151,7 +151,7 @@ function showScores() {
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
 
-    localStorage.setItem('mostRecentScore', score);
+    localStorage.setItem('mostRecentScore', quiz.score);
 
     return window.location.assign("/end.html");
 };

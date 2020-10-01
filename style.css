@@ -1,9 +1,5 @@
 /* // CSS GOES HERE */
-.time {
-    text-align: left;
-    font-size: 20px;
-    color: red;
-}
+
 
 body {
     background-color: pink;
@@ -26,6 +22,7 @@ body {
     color:palevioletred;
     padding: 2px 0px;
 }
+
 
 .grid p {
     text-align: center;
@@ -85,4 +82,10 @@ body {
     font-size: 20px;
     margin: 40px 2px;
     cursor: pointer;
+}
+
+.time {
+    text-align: left;
+    font-size: 20px;
+    color: red;
 }

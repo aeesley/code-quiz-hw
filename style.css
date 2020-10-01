@@ -54,6 +54,27 @@ body {
     margin: 10px 40px 10px 0px;
     padding: 10px 10px;
 }
+
+.buttonextra {
+    background-color: black;
+    width: 250px;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid black;
+    margin: 10px 40px 10px 0px;
+    padding: 10px 10px;
+
+}
+
+.tryagainlink {
+    color: palevioletred;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
  
 #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
@@ -88,4 +109,21 @@ body {
     text-align: left;
     font-size: 20px;
     color: red;
+}
+
+/* FORMS*/
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 16px;
+    width: 300px;
+    padding: 10px;
+    font-size: 20px;
+    border: solid black 1px;
 }

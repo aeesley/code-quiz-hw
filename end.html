@@ -16,10 +16,28 @@
         <div id="quiz">
             <div class="container">
                 <div id="end">
-                    <h1>Congratulations!</h1>
+                    <h1 id="finalScore">0</h1>
+                    <form>
+                        <input  
+                            type="text"
+                            name="username"
+                            id="username"
+                            placeholder="username"
+                        >
+                        <button
+                            type="submit"
+                            class="buttonextra"
+                            id="saveScoreButton"
+                            onclick="saveHighScore(event)"
+                        >
+                        Save High Score
+                        </button>
+                        </form>
+                        <a class="tryagainlink" href="/game.html">Try Again</a>
+                    </form>
                 </div>   
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="end.js"></script>
 </body>
 </html>

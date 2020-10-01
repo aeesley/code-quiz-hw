@@ -47,7 +47,14 @@ function setTime() {
         }
     }, 1000); // denotes that time will decrease by one second at a time
     
-}
+ }
+    
+ // Score Penalty Logic
+// THIS WOULD GO INSIDE THE setTime function
+//  if(guess != isCorrectAnswer){
+//     scorePenalty();
+// }
+// THEN WOULD CALL THE setTime function inside the populate function?
 
 
 function Quiz(questions) {
@@ -131,7 +138,6 @@ function showScores() {
     element.innerHTML = gameOverHTML;
 };
  
-
  
 // Defining the variable to create the quiz
 var quiz = new Quiz(questions);
@@ -141,228 +147,4 @@ populate();
 
 
 
-
-
-
-// Variables
-
-
-// const quizContainer = document.querySelector("#quiz");
-// const resultsContainer = document.querySelector("#results");
-// const submitButton = document.querySelector("#submit");
-
-// var output = [];
-
-// //pagination variables
-// const previousButton = document.querySelector("#previous");
-// const nextButton = document.querySelector("#next");
-// const slides = document.querySelectorAll(".slide");
-// let currentSlide = 0;
-
-
-// // // Defining quiz questions and answers
-// const myQuestions = [
-//     {
-//     question: "Who is the original OG of the OC?",
-//     answers: {
-//         a: "Vickie Gunvalson", 
-//         b: "Tamara Barney", 
-//         c: "Kelly Ripa", 
-//         d: "Ramona Singer",
-//         },
-//         correctAnswer: "a"
-//     },
-//     {
-//         question: "Who infamously flipped a dinner table?",
-//         answers: {
-//             a: "Vickie Gunvalson", 
-//             b: "Cynthia Bailey", 
-//             c: "Theresa Giudice", 
-//             d: "Andy Cohen",
-//             },
-//         correctAnswer: "c"
-//     },
-//     {
-//         question: "Which Real Housewives franchise only received 1 season?",
-//         answers: {
-//             a: "Orange County", 
-//             b: "Washington DC", 
-//             c: "Miami", 
-//             d: "Chicago",
-//             },
-//         correctAnswer: "b"
-//     },
-//     {
-//         question: "Who has the longest running divorce on any franchise?",
-//         answers: {
-//             a: "Alexis Bellino", 
-//             b: "Taylor Armstrong", 
-//             c: "Ramona Singer", 
-//             d: "Bethenny Frankel",
-//             },
-//         correctAnswer: "d"
-//     },
-
-//     // DIFFERENT VERSION QUESTION SETS
-//     // {
-//     //     question: "Who is the original OG of the OC?",
-//     //     choices: ['Vickie Gunvalson', 'Tamara Barney', 'Kelly Ripa', 'Ramona Singer'],
-//     //     correctAnswer: '0'
-//     // },
-//     // {
-//     //     question: "Who infamously flipped a dinner table?",
-//     //     choices: ['Vickie Gunvalson', 'Cynthia Bailey', 'Theresa Giudice', 'Andy Cohen'], 
-//     //     correctAnswer: '2'
-//     // },
-//     // {
-//     //     question: "Which Real Housewives franchise only received 1 season?",
-//     //     choices: ['Orange County', 'Washington DC', 'Miami', 'Chicago'],
-//     //     correctAnswer: '1'
-//     // },
-//     // {
-//     //     question: "Who has the longest running divorce on any franchise?",
-//     //     choices: ['Alexis Bellino', 'Taylor Armstrong', 'Ramona Singer', 'Bethenny Frankel'],
-//     //     correctAnswer: '3'
-//     // },
-// ]
-
-
-
-// // Other Functions
-
-// function buildQuiz(){
-//     setTime(); 
-
-//     const output = [];
-
-//     // for each question...
-//     myQuestions.forEach(
-//       (currentQuestion, questionNumber) => {
-
-//         // variable to store the list of possible answers
-//         const answers= [];
-
-//         // and for each available answer...
-//         for(letter in currentQuestion.answers){
-
-//           // ...add an HTML radio button
-//           answers.push(
-//             `<label>
-//               <input type="radio" name="question${questionNumber}" value="${letter}">
-//               ${letter} :
-//               ${currentQuestion.answers[letter]}
-//             </label>`
-//           );
-//         }
-
-//         // add this question and its answers to the output
-//         output.push(
-//           `<div class="slide">
-//             <div class="question"> ${currentQuestion.question} </div>
-//             <div class="choices"> ${answers.join("")} </div>
-//           </div>`
-//         );
-//       }
-//     );
-//     //storing answers
-//     //         var choices = [];
-
-//     //         for(letter in currentQuestion.choices){
-
-//     //             choices.push(
-//     //                 `<label>
-//     //                 <input = type="radio" name="questions${question.Number}" value="${letter}">
-//     //                 ${letter} :
-//     //                 ${currentQuestion.choices[letter]}
-//     //                 </label>`
-//     //             );
-//     //         }
-//     //         output.push(
-//     //             `<div class="slide">
-//     //                 <div class-"question"> ${currentQuestion.question} </div>
-//     //                 <div class="answers"> ${choices.join("")} >/div>
-//     //                 </div>`
-//     //         );
-//     //     }
-//     // );
-
-//     // join to HTML
-//     quizContainer.innerHTML = output.join('');
-// }
-
-
-// function showResults() {
-//     //collect answers
-//     var answerContainers = quizContainer.querySelectorAll('.answers');
-
-//     //count wrong answers
-//     // var userAnswer = '';
-//     // var numCorrect = 0;
-
-//     // for (var i=0; i<myQuestions.length; i++){
-//     //     userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
-
-//     // keep track of answers
-//     let numCorrect = 0;
-
-//     myQuestions.forEach((currentQuestion, questionNumber) => {
-
-//         var answerContainer = answerContainers[questionNumber];
-//         var selector = `input[name=questions${questionNumber}]:checked`;
-//         var userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-//         // if else loop, changing answer colors based on correct/incorrect
-//         if (userAnswer === currentQuestion.correctAnswer) {
-
-//             numCorrect++;
-//             answerContainers[questionNumber].style.color = 'green';
-//         }
-//         else {
-//             answerContainers[questionNumber].style.color = 'red';
-//         }
-//     });
-//     // show correct answers out of total
-//     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-// }
-
-// // Function to get paginations with slides to work
-// function showSlide(n){
-//     slides[currentSlide].classList.remove('active-slide');
-//     slides[n].classList.add('active-slide');
-//     currentSlide = n;
-//     if(currentSlide === 0){
-//         previousButton.style.display = 'none';
-//     }
-//     else{
-//         previousButton.style.display = 'inline=block';
-//     }
-//     if(currentSlide === slides.length-1){
-//         nextButton.style.display = 'none';
-//         submitButton.style.display = 'inline-block';
-//     }
-//     else{
-//         nextButton.style.display = 'inline-block';
-//         submitButton.style.display = 'none';
-//     }
-// }
-
-// // Calling the buildQuiz function (Starting the Quiz
-// buildQuiz();
-
-// showSlide(currentSlide);
-
-// function showNextSlide(){
-//     showSlide(currentSlide + 1);
-// }
-
-// function showPreviousSlide(){
-//     showSlide(currentSlide - 1);
-// }
-
-
-
-// //Event Listeners
-// submitButton.addEventListener('click', showResults);
-// previousButton.addEventListener("click", showPreviousSlide);
-// nextButton.addEventListener("click", showNextSlide);
 

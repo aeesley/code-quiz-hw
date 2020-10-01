@@ -9,6 +9,7 @@ body {
     background-color: pink;
 }
 
+
 .grid {
     width: 600px;
     height: 500px;
@@ -24,6 +25,10 @@ body {
     text-align: center;
     color:palevioletred;
     padding: 2px 0px;
+}
+
+.grid p {
+    text-align: center;
 }
 
 #score {
@@ -65,4 +70,17 @@ body {
 #progress {
     color: #2b2b2b;
     font-size: 18px;
+}
+
+.startbutton {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 20px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

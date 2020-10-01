@@ -150,6 +150,10 @@ function showScores() {
     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
+
+    localStorage.setItem('mostRecentScore', score);
+
+    return window.location.assign("/end.html");
 };
  
  

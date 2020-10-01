@@ -4,7 +4,9 @@ const finalScore = document.getElementById("finalScore");
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 
-localStorage.setItem("highScores", JSON.stringify({}));
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+console.log(highScores);
+
 finalScore.innerText = mostRecentScore;
 
 
@@ -15,4 +17,11 @@ username.addEventListener('keyup', () => {
 
 saveHighScore = e => {
     e.preventDefault();
+
+    const score = {
+        score: mostRecentScore,
+        name: username.value
+    };
+    highScores.push(score);
+    console.log(highScores);
 }

@@ -135,7 +135,7 @@ function showScores() {
 
     localStorage.setItem('mostRecentScore', quiz.score); // sending quiz.score to local storage so we can grab it on the end.html page
 
-    return window.location.assign("/end.html"); // this make it refresh and show in the end.html page instead of game.html
+    return window.location.assign("./end.html"); // this make it refresh and show in the end.html page instead of game.html
 };
  
  

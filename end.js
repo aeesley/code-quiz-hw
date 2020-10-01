@@ -30,6 +30,7 @@ saveHighScore = e => {
     highScores.splice(5); // cap at 5 scores
 
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.location.assign("/");
 
     console.log(highScores);
 }

@@ -4,6 +4,6 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || []; // pull
 
 highScoresList.innerHTML = highScores
     .map(score => {
-    return `<li class="high-score">${score.name}-${score.score}</li>`;
+    return `<li class="high-score">${score.name} : ${score.score}</li>`;
     }) // map takes an array of items and converts them into something else
     .join("");

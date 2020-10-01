@@ -5,6 +5,9 @@ const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+const MAX_HIGH_SCORES = 5;
+
 console.log(highScores);
 
 finalScore.innerText = mostRecentScore;
@@ -22,6 +25,11 @@ saveHighScore = e => {
         score: mostRecentScore,
         name: username.value
     };
-    highScores.push(score);
+    highScores.push(score); // ad score
+    highScores.sort( (a,b) => b.score - a.score) // sorting the high scores
+    highScores.splice(5); // cap at 5 scores
+
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
     console.log(highScores);
 }

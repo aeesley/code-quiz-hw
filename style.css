@@ -91,6 +91,7 @@ body {
 }
 
 .startbutton {
+    font-family: "comic sans";
     background-color: black;
     color: white;
     border: none;
@@ -126,4 +127,20 @@ input {
     padding: 10px;
     font-size: 20px;
     border: solid black 1px;
+}
+
+.highscoreslink {
+    font-family: "comic sans";
+    background-color: lightpink;
+    color: black;
+    border: none;
+    padding: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    width: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
 }

@@ -78,6 +78,13 @@ Quiz.prototype.guess = function(answer) {
 Quiz.prototype.isEnded = function() {
     return this.questionIndex === this.questions.length;
 }
+
+// Quiz.prototype.isEnded = function() {
+//     if (currentQuestionNumber === questions.length) { // atempted to push answers to end.html
+//         localStorage.setItem('mostRecentScore', score)
+//         return window.location.assign("/end.htlm");
+//     }
+// }
  
  
 function Question(text, choices, answer) {
@@ -131,8 +138,15 @@ function showProgress() {
 };
  
 // function that shows user score once they have completed the game 
+// function showScores() {
+//     var gameOverHTML = "<h1>Result</h1>";
+//     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+//     var element = document.getElementById("quiz");
+//     element.innerHTML = gameOverHTML;
+// };
+
 function showScores() {
-    var gameOverHTML = "<h1>Result</h1>";
+    var gameOverHTML = "<h1>finalScore</h1>";
     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
     var element = document.getElementById("quiz");
     element.innerHTML = gameOverHTML;
